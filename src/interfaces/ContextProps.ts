@@ -5,6 +5,8 @@ export interface ShoppingCartContextProps {
   increaseCartQuantity: (id: number) => void;
   decreaseCartQuantity: (id: number) => void;
   removeFromCart: (id: number) => void;
+  cartItems: CartItemProps[];
+  cartQuantity: number;
 }
 
 export interface ShoppingCartProviderProps {
