@@ -13,9 +13,18 @@ export function useShoppingCart() {
 
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   const [cartItems, setCartItems] = useState<CartItemProps[]>([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   const getItemQuantity = (id: number) =>
     cartItems.find((item) => item.id === id)?.quantity || 0;
+
+  const cartQuantity = cartItems.reduce(
+    (quantity, item) => item.quantity + quantity,
+    0
+  );
+
+  const openCart = () => setIsOpen(true);
+  const closeCart = () => setIsOpen(false);
 
   const increaseCartQuantity = (id: number) => {
     setCartItems((currItems) => {
@@ -62,7 +71,10 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
         increaseCartQuantity,
         decreaseCartQuantity,
         removeFromCart,
-        cartItems
+        cartItems,
+        cartQuantity,
+        closeCart,
+        openCart
       }}
     >
       {children}
