@@ -1,6 +1,7 @@
 import { Offcanvas, Stack } from "react-bootstrap";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import { formatCurrency } from "../utils/formatCurrency";
+import { CartItem } from "./CartItem";
 import storeItems from "../data.json";
 import { ShoppingCartProps } from "../interfaces/ShoppingCartProps";
 
@@ -13,10 +14,10 @@ export const ShoppingCart = ({ isOpen }: ShoppingCartProps) => {
       </Offcanvas.Header>
       <Offcanvas.Body>
         <Stack gap={3}>
-          {/*  {cartItems.map(item => (
+          {cartItems.map((item) => (
             <CartItem key={item.id} {...item} />
-          ))} */}
-          {/*  <div className="ms-auto fw-bold fs-5">
+          ))}
+          <div className="ms-auto fw-bold fs-5">
             Total{" "}
             {formatCurrency(
               cartItems.reduce((total, cartItem) => {
@@ -24,7 +25,7 @@ export const ShoppingCart = ({ isOpen }: ShoppingCartProps) => {
                 return total + (item?.price || 0) * cartItem.quantity;
               }, 0)
             )}
-          </div> */}
+          </div>
         </Stack>
       </Offcanvas.Body>
     </Offcanvas>

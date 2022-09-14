@@ -4,6 +4,7 @@ import {
   ShoppingCartProviderProps,
   CartItemProps
 } from "../interfaces/ContextProps";
+import { ShoppingCart } from "../components/ShoppingCart";
 
 const ShoppingCartContext = createContext<ShoppingCartContextProps>({});
 
@@ -77,6 +78,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
         openCart
       }}
     >
+      <ShoppingCart isOpen={isOpen} />
       {children}
     </ShoppingCartContext.Provider>
   );
